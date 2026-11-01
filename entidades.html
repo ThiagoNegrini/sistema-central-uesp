@@ -1,205 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#b90008">
-  <meta name="description" content="Área de informações e serviços da UESP para escolas de samba e blocos carnavalescos.">
-  <title>Acesso Entidades | Sistema Central UESP</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --red: #c9000b; --deep-red: #a90008; --ink: #252633;
-      --muted: #666875; --line: #eee2e3; --soft: #fff7f7;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh; display: flex; flex-direction: column;
-      font-family: Inter, "Segoe UI", Arial, sans-serif; color: var(--ink);
-      background: linear-gradient(180deg, #fff 0%, #fff 62%, #fff8f8 100%);
-    }
-    a { -webkit-tap-highlight-color: transparent; }
-    .topline { height: 6px; background: linear-gradient(90deg, #8f0006, #ed1722, #a90008); }
-    .site-header {
-      position: relative; z-index: 2; display: flex; align-items: center;
-      justify-content: space-between; gap: 20px; width: min(1180px, calc(100% - 48px));
-      margin: 0 auto; padding: 17px 0;
-    }
-    .brand { display: inline-flex; align-items: center; gap: 15px; text-decoration: none; }
-    .brand img { width: 86px; height: 62px; object-fit: contain; }
-    .brand-copy { border-left: 1px solid #e8c7c9; padding-left: 15px; color: #4a2528; }
-    .brand-copy strong { display: block; font-size: 13px; letter-spacing: .07em; text-transform: uppercase; }
-    .brand-copy span { display: block; margin-top: 3px; color: #777; font-size: 11px; }
-    .home-link {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 15px;
-      border: 1px solid var(--line); border-radius: 999px; color: var(--deep-red);
-      text-decoration: none; font-size: 14px; font-weight: 700; transition: .2s ease;
-    }
-    .home-link:hover { background: var(--soft); border-color: #e9b8bb; transform: translateY(-2px); }
-    .hero {
-      position: relative; isolation: isolate; overflow: hidden; min-height: 300px;
-      display: flex; align-items: center; background: #f8eeee;
-    }
-    .hero::before {
-      content: ""; position: absolute; z-index: -2; inset: 0;
-      background: url("https://i0.wp.com/agitopop.com.br/wp-content/uploads/2026/01/Carnaval_UESP.jpg?resize=1024%2C576&ssl=1") center 43%/cover no-repeat;
-      filter: saturate(.72);
-    }
-    .hero::after {
-      content: ""; position: absolute; z-index: -1; inset: 0;
-      background: linear-gradient(90deg, rgba(255,255,255,.90) 0%, rgba(255,255,255,.88) 48%, rgba(255,255,255,.48) 100%);
-    }
-    .hero-inner { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 50px 0 56px; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px;
-      color: var(--deep-red); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 25px; height: 3px; border-radius: 4px; background: var(--red); }
-    h1 { max-width: 700px; font-size: clamp(38px, 5.3vw, 62px); line-height: 1.02; letter-spacing: -.045em; }
-    h1 span { color: var(--red); }
-    .hero p { max-width: 590px; margin-top: 17px; color: #4e4d56; font-size: clamp(16px, 2vw, 20px); line-height: 1.55; }
-    main { width: min(1180px, calc(100% - 48px)); margin: -25px auto 55px; position: relative; z-index: 1; flex: 1; }
-    .welcome {
-      padding: 23px 27px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,.9);
-      border-radius: 18px; background: rgba(255,255,255,.96);
-      box-shadow: 0 12px 35px rgba(57, 16, 19, .08);
-      display: flex; align-items: center; justify-content: space-between; gap: 22px;
-    }
-    .welcome h2 { font-size: 21px; letter-spacing: -.02em; }
-    .welcome p { margin-top: 6px; max-width: 760px; color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .welcome-mark {
-      flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center;
-      border-radius: 15px; color: var(--red); background: #fff0f1; font-size: 23px;
-    }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 32px 2px 17px; }
-    .section-heading h2 { font-size: 22px; letter-spacing: -.025em; }
-    .section-heading p { color: var(--muted); font-size: 13px; }
-    .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .service {
-      position: relative; min-height: 220px; padding: 25px 23px 22px; overflow: hidden;
-      display: flex; flex-direction: column; align-items: flex-start;
-      border: 1px solid var(--line); border-radius: 19px; background: #fff;
-      box-shadow: 0 7px 22px rgba(49, 18, 20, .055);
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-    a.service { color: inherit; text-decoration: none; }
-    a.service:hover { transform: translateY(-6px); border-color: #e8b4b7; box-shadow: 0 16px 30px rgba(105, 18, 25, .12); }
-    .service-icon {
-      width: 51px; height: 51px; display: grid; place-items: center; margin-bottom: 18px;
-      border-radius: 15px; color: var(--red); background: #fff0f1; font-size: 25px;
-    }
-    .service h3 { font-size: 19px; letter-spacing: -.02em; }
-    .service p { margin-top: 9px; color: var(--muted); font-size: 14px; line-height: 1.55; }
-    .service-action { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 19px; color: var(--red); font-size: 13px; font-weight: 800; }
-    .service-action span { transition: transform .2s ease; }
-    a.service:hover .service-action span { transform: translateX(4px); }
-    .notice {
-      display: flex; align-items: center; gap: 16px; margin-top: 23px; padding: 17px 20px;
-      border: 1px solid #f1d5d7; border-radius: 15px; background: linear-gradient(100deg, #fff0f1, #fffafa);
-      color: #6b4548; font-size: 13px; line-height: 1.5;
-    }
-    .notice-icon { flex: 0 0 34px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; background: #ffe0e2; color: var(--red); font-size: 17px; }
-    .back-row { margin-top: 27px; }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--deep-red); text-decoration: none; font-size: 14px; font-weight: 700; }
-    .back-link:hover { text-decoration: underline; }
-    footer { padding: 25px 20px; color: #fff; text-align: center; background: linear-gradient(105deg, #9d0007, #c9000b); }
-    footer p { font-size: 14px; font-weight: 650; letter-spacing: .01em; }
-    footer span { display: block; margin-top: 5px; color: rgba(255,255,255,.75); font-size: 11px; }
-    @media (max-width: 760px) {
-      .services { grid-template-columns: 1fr; }
-      .service { min-height: 190px; }
-      .hero { min-height: 270px; }
-      .hero::after { background: linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.72)); }
-      .welcome { align-items: flex-start; }
-      .section-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
-    }
-    @media (max-width: 520px) {
-      .site-header, .hero-inner, main { width: min(100% - 32px, 1180px); }
-      .site-header { padding: 12px 0; }
-      .brand { gap: 9px; }
-      .brand img { width: 66px; height: 50px; }
-      .brand-copy { padding-left: 9px; }
-      .brand-copy strong { font-size: 10px; }
-      .brand-copy span { font-size: 9px; }
-      .home-link { padding: 9px 11px; font-size: 12px; }
-      .hero-inner { padding: 43px 0 52px; }
-      main { margin-top: -18px; margin-bottom: 38px; }
-      .welcome { padding: 19px; gap: 12px; }
-      .welcome h2 { font-size: 19px; }
-      .welcome-mark { flex-basis: 40px; width: 40px; height: 40px; }
-      .service { padding: 22px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#bd0008">
+<title>Acesso Entidades | Sistema Central UESP</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#292938;background:#fff;min-height:100vh;display:flex;flex-direction:column}.top{height:7px;background:#b90008}
+.nav{height:88px;background:linear-gradient(105deg,#a90008,#cf000b);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(4%,calc((100% - 1420px)/2));gap:20px}
+.brand{display:flex;align-items:center;gap:22px;color:white;text-decoration:none}.brand img{width:112px;height:65px;object-fit:contain;filter:brightness(0) invert(1)}.brand strong{font-size:17px;line-height:1.25;text-transform:uppercase;border-left:2px solid rgba(255,255,255,.7);padding-left:25px}
+.nav a.home{color:#fff;text-decoration:none;font-weight:bold;padding:12px 18px;border-left:1px solid rgba(255,255,255,.5)}
+.hero{min-height:290px;display:flex;align-items:center;position:relative;background:linear-gradient(90deg,rgba(255,255,255,.25),rgba(255,255,255,.88) 34%,rgba(255,255,255,.72)),url("https://i0.wp.com/agitopop.com.br/wp-content/uploads/2026/01/Carnaval_UESP.jpg?resize=1024%2C576&ssl=1") center 48%/cover no-repeat}
+.hero-inner{width:min(1380px,92%);margin:auto;padding:42px 0 48px 33%}.hero h1{font-size:clamp(42px,5vw,68px);line-height:1.05;margin:0 0 12px;letter-spacing:-2px}.hero h1 span{color:#c9000b}.hero p{font-size:clamp(18px,2vw,24px);line-height:1.35;max-width:620px;margin:0}.underline{width:95px;height:5px;border-radius:8px;background:#c9000b;margin-top:20px}
+main{width:min(1380px,92%);margin:22px auto 30px;flex:1}.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch}
+.card{border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(35,20,35,.15);min-height:350px}
+.service{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 28px 24px;border:1px solid #e6d9ef;background:linear-gradient(180deg,#f1eaff,#fff 40%,#fff8fa)}
+.service.upload{border-color:#a7d7ff;background:linear-gradient(180deg,#e4f4ff,#fff 40%,#fff)}
+.band{height:94px;width:100%;margin-bottom:-43px;background:linear-gradient(120deg,#49b4f5,#0874d5);clip-path:polygon(0 0,100% 0,100% 70%,70% 100%,0 72%)}
+.orders .band{background:linear-gradient(120deg,#c99af5,#7021c9)}
+.round-icon{width:124px;height:124px;border:5px solid white;border-radius:50%;background:#0874d5;color:#fff;display:grid;place-items:center;font-size:53px;box-shadow:0 4px 12px #0002;position:relative}
+.orders .round-icon{background:#7021c9}
+.service h2{font-size:27px;margin:12px 0 10px;letter-spacing:-.7px}.service p{font-size:18px;line-height:1.45;margin:0 0 18px;max-width:330px;flex:1}
+.action{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;background:#c9000b;color:#fff;text-decoration:none;border-radius:28px;padding:15px 18px;font-size:18px;font-weight:bold;transition:.2s}
+.action:hover{background:#a90008;transform:translateY(-2px)}
+.calendar{border:1px solid #eee0e1;display:flex;flex-direction:column}
+.cal-head{background:linear-gradient(110deg,#d0000b,#ae0008);color:white;padding:23px 25px;font-size:23px;font-weight:bold;display:flex;gap:17px;align-items:center}
+.cal-body{padding:18px 26px;display:flex;flex-direction:column;gap:16px;flex:1}
+.cal-row{display:flex;align-items:center;gap:18px;padding-bottom:14px;border-bottom:1px solid #e7e1e1}
+.cal-date{flex:0 0 78px;text-align:center;background:#c9000b;color:#fff;border-radius:12px;padding:10px 5px;font-weight:bold;font-size:16px;line-height:1.2}
+.cal-row p{margin:0;font-size:17px;line-height:1.35}
+.cal-foot{margin-top:auto;text-align:right;color:#a90008;font-size:13px;font-weight:bold;padding-top:8px}
+.news{margin-top:30px;border-radius:20px;padding:20px 28px;background:linear-gradient(100deg,#f9d8dc,#fff0f1);display:flex;align-items:center;gap:24px;color:#b90008}
+.megaphone{font-size:40px;border-right:2px solid #b90008;padding-right:24px}.news strong{font-size:21px}.news p{margin:5px 0 0;color:#383541;font-size:16px}
+footer{background:linear-gradient(105deg,#a90008,#d0000b);color:white;text-align:center;padding:23px 16px;font-weight:bold;font-style:italic}
+.back{display:block;text-align:center;margin:20px auto 0;color:#b90008;text-decoration:none;font-weight:bold}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.calendar{grid-column:1/-1;min-height:300px}.hero-inner{padding-left:25%}}
+@media(max-width:620px){.nav{height:auto;padding:12px 4%}.brand{gap:10px}.brand img{width:70px;height:48px}.brand strong{font-size:11px;padding-left:10px}.nav a.home{font-size:12px;padding:10px 0 10px 10px}.hero{min-height:260px;background-position:35% center}.hero-inner{width:90%;padding:38px 0 40px 10%}.hero h1{font-size:42px}.hero p{font-size:17px}.cards{grid-template-columns:1fr}.calendar{grid-column:auto}.service{min-height:330px}.news{align-items:flex-start;padding:18px;gap:14px}.megaphone{padding-right:14px}.news strong{font-size:18px}.news p{font-size:14px}.cal-head{font-size:20px}}
+</style>
 </head>
 <body>
-  <div class="topline"></div>
-  <header class="site-header">
-    <a class="brand" href="https://uesp.com.br/" aria-label="Site oficial da UESP">
-      <img src="https://uesp.com.br/wp-content/uploads/2016/11/logo-uesp-1.png" alt="Logotipo oficial da UESP">
-      <span class="brand-copy"><strong>União das Escolas<br>de Samba Paulistanas</strong><span>Sistema Central UESP</span></span>
-    </a>
-    <a class="home-link" href="index.html"><span aria-hidden="true">⌂</span> Página inicial</a>
-  </header>
-
-  <section class="hero" aria-labelledby="titulo-principal">
-    <div class="hero-inner">
-      <div class="eyebrow">Sistema Central UESP</div>
-      <h1 id="titulo-principal">Acesso <span>Entidades</span></h1>
-      <p>O espaço de informações e serviços para sua escola de samba ou bloco carnavalesco.</p>
-    </div>
-  </section>
-
-  <main>
-    <section class="welcome" aria-labelledby="boas-vindas">
-      <div>
-        <h2 id="boas-vindas">Bem-vinda, agremiação!</h2>
-        <p>Neste ambiente, as entidades poderão acessar informações, orientações e serviços disponibilizados pela UESP para a organização do Carnaval de São Paulo.</p>
-      </div>
-      <div class="welcome-mark" aria-hidden="true">✦</div>
-    </section>
-
-    <div class="section-heading">
-      <h2>Serviços e informações</h2>
-      <p>Acesse os conteúdos e sistemas disponibilizados pela UESP</p>
-    </div>
-
-    <section class="services" aria-label="Serviços para entidades">
-      <article class="service">
-        <div class="service-icon" aria-hidden="true">▦</div>
-        <h3>Calendário e prazos</h3>
-        <p>Consulte as datas importantes, os períodos e os prazos do calendário do Carnaval.</p>
-        <div class="service-action">Informações em breve <span aria-hidden="true">→</span></div>
-      </article>
-
-      <a class="service" href="ORDEM_DOS_DESFILES_2027.pdf" target="_blank" rel="noopener noreferrer">
-        <div class="service-icon" aria-hidden="true">▤</div>
-        <h3>Ordens de Desfiles</h3>
-        <p>Consulte o documento com a ordem dos desfiles do Carnaval 2027.</p>
-        <div class="service-action">Acessar documento <span aria-hidden="true">↗</span></div>
-      </a>
-
-      <a class="service" href="https://thiagonegrini.github.io/upload_de_arquivos/" target="_blank" rel="noopener noreferrer">
-        <div class="service-icon" aria-hidden="true">⇧</div>
-        <h3>Envio de documentos</h3>
-        <p>Envie os arquivos da sua entidade pelo sistema próprio de recebimento da UESP.</p>
-        <div class="service-action">Acessar sistema <span aria-hidden="true">↗</span></div>
-      </a>
-    </section>
-
-    <aside class="notice">
-      <div class="notice-icon" aria-hidden="true">i</div>
-      <p><strong>Importante:</strong> o envio de documentos continuará sendo realizado no sistema próprio da UESP, com o login e a senha da entidade.</p>
-    </aside>
-
-    <div class="back-row"><a class="back-link" href="index.html">← Voltar à página inicial</a></div>
-  </main>
-
-  <footer>
-    <p>UESP, a matriz do samba, juntos pelo Carnaval de São Paulo.</p>
-    <span>União das Escolas de Samba Paulistanas</span>
-  </footer>
-</body>
-</html>
+<div class="top"></div>
+<header class="nav">
+<a class="brand" href="https://uesp.com.br/" aria-label="Site oficial da UESP"><img src="https://uesp.com.br/wp-content/uploads/2016/11/logo-uesp-1.png" alt="UESP"><strong>União das Escolas<br>de Samba Paulistanas</strong></a>
+<a class="home" href="index.html">⌂ &nbsp;Início</a>
+</header>
+<section class="hero"><div class="hero-inner"><h1>Acesso <span>Entidades</span></h1><p>Aqui, sua escola ou bloco encontra as principais informações e serviços da UESP.</p><div class="underline"></div></div></section>
+<main>
+<section class="cards" aria-label="Serviços e informações">
+<article class="card service upload"><div class="band"></div><div class="round-icon" aria-hidden="true">⇧</div><h2>Envio de Documentos</h2><p>Acesse o sistema de envio de arquivos da sua entidade.</p><a class="action" href="https://thiagonegrini.github.io/upload_de_arquivos/" target="_blank" rel="noopener noreferrer">Acessar o sistema ↗</a></article>
+<article class="card service orders"><div class="band"></div><div class="round-icon" aria-hidden="true">▤</div><h2>Ordens de Desfiles</h2><p>Confira a ordem dos desfiles do Carnaval 2027.</p><a class="action" href="ORDEM_DOS_DESFILES_2027.pdf" target="_blank" rel="noopener noreferrer">Acessar o documento ↗</a></article>
+<aside class="card calendar"><div class="cal-head"><span aria-hidden="true">▦</span> Calendário e prazos</div><div class="cal-body"><div class="cal-row"><div class="cal-date">2027</div><p>Consulte aqui as datas importantes do Carnaval.</p></div><div class="cal-row"><div class="cal-date">UESP</div><p>Os prazos e comunicados oficiais serão divulgados neste espaço.</p></div><div class="cal-foot">Atualizações nesta página</div></div></aside>
+</section>
+<section class="news"><div class="megaphone" aria-hidden="true">♧</div><div><strong>Fique por dentro!</strong><p>Acompanhe os canais oficiais da UESP para receber as últimas novidades.</p></div></section>
+<a class="back" href="index.html">← Voltar à página inicial</a>
+</main>
+<footer>UESP, a matriz do samba, juntos pelo Carnaval de São Paulo.</footer>
+</body></html>
