@@ -10,9 +10,9 @@
 :root{color-scheme:light;--bg:#fff;--panel:#fff;--line:#f0d8da;--red:#c9000b;--deep:#a90008;--muted:#666875}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#292938;background:radial-gradient(ellipse at 50% -25%,#ffe5e7 0,#fff 48%,#fff8f8 100%);display:flex;flex-direction:column}
 .topline{height:7px;background:linear-gradient(90deg,#8f0006,#ed1722,#a90008)}
-header{width:min(1240px,92%);margin:auto;min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #eadcdd}
-.brand{color:#292938;text-decoration:none;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.brand span{color:var(--red)}
-.home{color:var(--deep);text-decoration:none;font-size:14px;border:1px solid #e8c5c8;padding:10px 15px;border-radius:10px;transition:background .2s,color .2s,transform .2s}.home:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+header{width:100%;margin:0;min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 max(4%,calc((100% - 1380px)/2));background:linear-gradient(105deg,#a90008,#cf000b);box-shadow:0 8px 24px rgba(105,0,8,.15)}
+.brand{display:flex;align-items:center;gap:20px;color:#fff;text-decoration:none;font-size:15px;font-weight:800;letter-spacing:.04em;line-height:1.25;text-transform:uppercase}.brand img{width:105px;height:65px;object-fit:contain;filter:brightness(0) invert(1)}.brand strong{border-left:2px solid rgba(255,255,255,.65);padding-left:20px}.brand span{color:inherit}
+.home{color:#fff;text-decoration:none;font-size:14px;border:1px solid rgba(255,255,255,.55);padding:10px 15px;border-radius:10px;transition:background .2s,color .2s,transform .2s}.home:hover{background:#fff;color:#a90008;transform:translateY(-2px)}
 main{width:min(1240px,92%);margin:0 auto;padding:68px 0 74px;flex:1}
 .eyebrow{color:var(--deep);font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
 h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.045em;margin:15px 0 14px;color:#252633}h1 span{color:var(--red)}
@@ -30,13 +30,13 @@ h3{font-size:19px;margin:0 0 9px;letter-spacing:-.02em;color:#292938}.card p{col
 footer{padding:23px 20px;text-align:center;background:linear-gradient(105deg,#9d0007,#c9000b);color:#fff;font-size:13px}footer span{display:block;margin-top:6px;color:rgba(255,255,255,.76);font-size:11px}
 @keyframes card-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{50%{box-shadow:0 0 2px #d9000b;opacity:.55}}
 @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:52px}}
-@media(max-width:560px){header{min-height:76px}.brand{font-size:11px}.home{font-size:12px;padding:9px 11px}main{padding:44px 0 56px}.heading{align-items:flex-start;flex-direction:column;gap:7px;margin-top:43px}.grid{grid-template-columns:1fr}.card{min-height:190px}}
+@media(max-width:560px){header{min-height:76px;padding:10px 4%}.brand{gap:10px;font-size:10px}.brand img{width:70px;height:48px}.brand strong{padding-left:10px}.home{font-size:12px;padding:9px 11px}main{padding:44px 0 56px}.heading{align-items:flex-start;flex-direction:column;gap:7px;margin-top:43px}.grid{grid-template-columns:1fr}.card{min-height:190px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
-<header><a class="brand" href="index.html"><span>ECO</span> Sistema Central UESP</a><a class="home" href="index.html">← Página inicial</a></header>
+<header><a class="brand" href="https://uesp.com.br/" aria-label="Site oficial da UESP"><img src="https://uesp.com.br/wp-content/uploads/2016/11/logo-uesp-1.png" alt="Logotipo oficial da UESP"><strong>União das Escolas<br>de Samba Paulistanas</strong></a><a class="home" href="index.html">← Página inicial</a></header>
 <main>
 <div class="eyebrow">Ambiente institucional · UESP</div>
 <h1>Painel de <span>Gestão</span></h1>
