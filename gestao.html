@@ -32,6 +32,10 @@ footer{padding:23px 20px;text-align:center;background:linear-gradient(105deg,#9d
 @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding-top:52px}}
 @media(max-width:560px){header{min-height:76px;padding:10px 4%}.brand{gap:10px;font-size:10px}.brand img{width:70px;height:48px}.brand strong{padding-left:10px}.home{font-size:12px;padding:9px 11px}main{padding:44px 0 56px}.heading{align-items:flex-start;flex-direction:column;gap:7px;margin-top:43px}.grid{grid-template-columns:1fr}.card{min-height:190px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Aparência glass alinhada à página inicial */
+.card{background:rgba(255,255,255,.7);backdrop-filter:blur(16px) saturate(145%);-webkit-backdrop-filter:blur(16px) saturate(145%);border-color:rgba(255,255,255,.9);box-shadow:0 12px 34px rgba(105,18,25,.11),inset 0 1px 0 rgba(255,255,255,.9)}
+.card:hover{border-color:rgba(201,0,11,.28);box-shadow:0 22px 44px rgba(105,18,25,.16),0 0 28px rgba(201,0,11,.08),inset 0 1px 0 #fff}
 </style>
 </head>
 <body>
@@ -42,15 +46,16 @@ footer{padding:23px 20px;text-align:center;background:linear-gradient(105deg,#9d
 <h1>Painel de <span>Gestão</span></h1>
 <p class="lead">Acesso centralizado às áreas de trabalho da UESP. Selecione uma frente para consultar seus recursos e atividades.</p>
 <div class="status">Central de operações</div>
-<div class="heading"><h2>Áreas de gestão</h2><p>7 módulos institucionais</p></div>
+<div class="heading"><h2>Áreas de gestão</h2><p>8 módulos institucionais</p></div>
 <section class="grid" aria-label="Módulos de gestão da UESP">
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⌘</div><span class="number">01 / 07</span></div><h3>Gestão Institucional</h3><p>Organize cadastros, equipes, responsabilidades e rotinas administrativas da UESP.</p></article>
-<a class="card" href="gestao-documentos.html" style="color:inherit;text-decoration:none"><div class="card-top"><div class="icon" aria-hidden="true">▤</div><span class="number">02 / 07</span></div><h3>Gestão de Documentos</h3><p>Centralize documentos institucionais, acompanhe arquivos e mantenha os registros organizados.</p></a>
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⟳</div><span class="number">03 / 07</span></div><h3>Sorteio Ordem de Desfile</h3><p>Prepare e acompanhe o processo de sorteio que define a ordem dos desfiles.</p></article>
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">✦</div><span class="number">04 / 07</span></div><h3>MISS UESP</h3><p>Reúna informações, etapas e atividades relacionadas ao concurso MISS UESP.</p></article>
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">◇</div><span class="number">05 / 07</span></div><h3>Eventos</h3><p>Acompanhe o planejamento, a organização e as informações dos eventos da UESP.</p></article>
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⚑</div><span class="number">06 / 07</span></div><h3>Coordenação de Carnaval</h3><p>Coordene atividades, cronogramas e informações operacionais do Carnaval.</p></article>
-<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">▥</div><span class="number">07 / 07</span></div><h3>Apuração</h3><p>Organize os dados e acompanhe os procedimentos de apuração dos resultados.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⌘</div><span class="number">01 / 08</span></div><h3>Gestão Institucional</h3><p>Organize cadastros, equipes, responsabilidades e rotinas administrativas da UESP.</p></article>
+<a class="card" href="gestao-documentos.html" style="color:inherit;text-decoration:none"><div class="card-top"><div class="icon" aria-hidden="true">▤</div><span class="number">02 / 08</span></div><h3>Gestão de Documentos</h3><p>Centralize documentos institucionais, acompanhe arquivos e mantenha os registros organizados.</p></a>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⟳</div><span class="number">03 / 08</span></div><h3>Sorteio Ordem de Desfile</h3><p>Prepare e acompanhe o processo de sorteio que define a ordem dos desfiles.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">✦</div><span class="number">04 / 08</span></div><h3>MISS UESP</h3><p>Reúna informações, etapas e atividades relacionadas ao concurso MISS UESP.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">◇</div><span class="number">05 / 08</span></div><h3>Eventos</h3><p>Acompanhe o planejamento, a organização e as informações dos eventos da UESP.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⚑</div><span class="number">06 / 08</span></div><h3>Coordenação de Carnaval</h3><p>Coordene atividades, cronogramas e informações operacionais do Carnaval.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">▥</div><span class="number">07 / 08</span></div><h3>Apuração</h3><p>Organize os dados e acompanhe os procedimentos de apuração dos resultados.</p></article>
+<article class="card"><div class="card-top"><div class="icon" aria-hidden="true">⚖</div><span class="number">08 / 08</span></div><h3>Área do Avaliador(a)</h3><p>Espaço dedicado aos avaliadores para acompanhar as atividades de avaliação dos desfiles.</p></article>
 </section>
 </main>
 <footer>UESP, a matriz do samba, juntos pelo Carnaval de São Paulo.<span>Criado por: Thiago Negrini © 2026</span></footer>
